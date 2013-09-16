@@ -1,4 +1,6 @@
-﻿namespace prep.collections
+﻿using prep.utility.filtering;
+
+namespace prep.collections
 {
   public delegate ProductionStudio MovieProductionStudio(Movie movie);
 
@@ -10,12 +12,12 @@
     }
   }
 
-  public static class Where
+  public static class RandomExtensions
   {
-      public static MovieProductionStudio equal_to(this MovieProductionStudio movieProductionStudio,
-                                                   ProductionStudio productionStudio)
-      {
-          return movieProductionStudio(productionStudio);
-      }
+    public static IMatchA<Movie> equal_to(this MovieProductionStudio movieProductionStudio,
+                                                 ProductionStudio productionStudio)
+    {
+      return movieProductionStudio(productionStudio);
+    }
   }
 }
