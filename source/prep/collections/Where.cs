@@ -1,12 +1,12 @@
-﻿using System;
-
-namespace prep.collections
+﻿namespace prep.collections
 {
+  public delegate ProductionStudio MovieProductionStudio(Movie movie);
+
   public class Where<ItemToMatch>
   {
-    public static void has_a(Func<object, object> func)
+    public static MovieProductionStudio has_a(MovieProductionStudio movie_production_studio)
     {
-      throw new NotImplementedException();
+      return movie_production_studio;
     }
   }
 }
