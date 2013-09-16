@@ -52,7 +52,7 @@ using prep.specs.utility;
  * If you have any questions please do not hesitate to email me at jp@developwithpassion.com
  * Or give me a call at (503)213-3507
  * 
- * Develop With Passion®!!
+ * Develop With Passion?!
  */
 
 namespace prep.specs
