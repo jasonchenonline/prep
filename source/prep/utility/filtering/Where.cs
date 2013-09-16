@@ -10,12 +10,19 @@ namespace prep.utility.filtering
     public static MatchFactory<TItemToMatch, TPropertyType> has_a<TPropertyType>(
       IGetTheValueOfAProperty<TItemToMatch, TPropertyType> property_accessor)
     {
-        return new MatchFactory<TItemToMatch, TPropertyType>();
+        return new MatchFactory<TItemToMatch, TPropertyType>(property_accessor);
     }
   }
 
   public class MatchFactory<TItemToMatch, TPropertyType>
   {
+    IGetTheValueOfAProperty<TItemToMatch, TPropertyType> property_accessor;
+
+    public MatchFactory(IGetTheValueOfAProperty<TItemToMatch, TPropertyType> property_accessor)
+    {
+      this.property_accessor = property_accessor;
+    }
+
     public IMatchA<TItemToMatch> equal_to(TPropertyType value)
     {
         return new AnonymousMatch<TItemToMatch>( x=> x).matches(value);
