@@ -30,7 +30,7 @@ namespace prep.collections
       return movies.Contains(movie);
     }
 
-    IEnumerable<Movie> all_movies_matching(MovieCondition condition)
+    IEnumerable<Movie> all_movies_matching(Condition<Movie> condition)
     {
       return movies.all_matching(condition.Invoke);
     }
