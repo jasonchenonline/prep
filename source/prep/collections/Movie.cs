@@ -40,7 +40,7 @@ namespace prep.collections
 
     public static Condition<Movie> is_published_by_pixar_or_disney()
     {
-      throw new NotImplementedException();
+        return movie => is_published_by(ProductionStudio.Disney).Invoke(movie) || is_published_by(ProductionStudio.Pixar).Invoke(movie);
     }
   }
 }
