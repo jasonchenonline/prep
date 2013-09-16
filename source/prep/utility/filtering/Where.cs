@@ -10,7 +10,7 @@ namespace prep.utility.filtering
     public static MatchFactory<TItemToMatch, TPropertyType> has_a<TPropertyType>(
       IGetTheValueOfAProperty<TItemToMatch, TPropertyType> property_accessor)
     {
-      throw new NotImplementedException();
+        return new MatchFactory<TItemToMatch, TPropertyType>();
     }
   }
 
@@ -18,7 +18,7 @@ namespace prep.utility.filtering
   {
     public IMatchA<TItemToMatch> equal_to(TPropertyType value)
     {
-      throw new NotImplementedException();
+        return new AnonymousMatch<TItemToMatch>( x=> x).matches(value);
     }
   }
 }
