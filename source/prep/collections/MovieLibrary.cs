@@ -32,7 +32,7 @@ namespace prep.collections
 
     IEnumerable<Movie> all_movies_matching(MovieCondition condition)
     {
-      return movies.all_items_matching()
+        return movies.all_items_matching(movie => condition(movie));
     }
 
 
