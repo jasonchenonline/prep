@@ -28,9 +28,9 @@ namespace prep.collections
       return this.title.GetHashCode();
     }
 
-    public static Condition<Movie> is_published_by(ProductionStudio pixar)
+    public static Condition<Movie> is_published_by(ProductionStudio studio)
     {
-      throw new NotImplementedException();
+        return movie => movie.production_studio == studio;
     }
   }
 }
