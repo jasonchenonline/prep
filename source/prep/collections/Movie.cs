@@ -1,4 +1,5 @@
 using System;
+using prep.utility;
 
 namespace prep.collections
 {
@@ -25,6 +26,11 @@ namespace prep.collections
     public override int GetHashCode()
     {
       return this.title.GetHashCode();
+    }
+
+    public static Condition<Movie> is_published_by(ProductionStudio pixar)
+    {
+      throw new NotImplementedException();
     }
   }
 }

@@ -32,9 +32,8 @@ namespace prep.collections
 
     IEnumerable<Movie> all_movies_matching(MovieCondition condition)
     {
-        return movies.all_items_matching(movie => condition(movie));
+      return movies.all_matching(condition.Invoke);
     }
-
 
     public IEnumerable<Movie> all_movies_published_by_pixar()
     {
@@ -49,7 +48,7 @@ namespace prep.collections
 
     public IEnumerable<Movie> all_movies_not_published_by_pixar()
     {
-        return all_movies_matching(movie => movie.production_studio != ProductionStudio.Pixar);
+      return all_movies_matching(movie => movie.production_studio != ProductionStudio.Pixar);
     }
 
     public IEnumerable<Movie> all_movies_published_after(int year)
