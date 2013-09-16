@@ -5,6 +5,7 @@ namespace prep.utility.filtering
   public delegate TPropertyValueType IGetTheValueOfAProperty<TItemToGetValueFrom, TPropertyValueType>(
     TItemToGetValueFrom item_to_get_value_from);
 
+    public TPropertyValueType ( )
   public class Where<TItemToMatch>
   {
     public static MatchFactory<TItemToMatch, TPropertyType> has_a<TPropertyType>(
@@ -25,7 +26,7 @@ namespace prep.utility.filtering
 
     public IMatchA<TItemToMatch> equal_to(TPropertyType value)
     {
-        return new AnonymousMatch<TItemToMatch>( x=> x).matches(value);
+        return new AnonymousMatch<TItemToMatch>( x=>  ).matches(value);
     }
   }
 }
