@@ -32,5 +32,15 @@ namespace prep.collections
     {
         return movie => movie.production_studio == studio;
     }
+
+    public static Condition<Movie> is_in_genre(Genre genre)
+    {
+        return movie => movie.genre == genre;
+    }
+
+    public static Condition<Movie> is_published_by_pixar_or_disney()
+    {
+      throw new NotImplementedException();
+    }
   }
 }
