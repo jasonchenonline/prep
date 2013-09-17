@@ -1,14 +1,15 @@
-﻿using prep.collections;
+﻿using System.Collections.Generic;
+using prep.collections;
 
 namespace prep.utility.filtering
 {
   public delegate TPropertyValueType IGetTheValueOfAProperty<TItemToGetValueFrom, TPropertyValueType>(
     TItemToGetValueFrom item_to_get_value_from);
 
-   /// <summary>
-   /// Where class is a gateway to a specification factory
-   /// </summary>
-   /// <typeparam name="TItemToMatch"></typeparam>
+  /// <summary>
+  /// Where class is a gateway to a specification factory
+  /// </summary>
+  /// <typeparam name="TItemToMatch"></typeparam>
   public class Where<TItemToMatch>
   {
     public static MatchFactory<TItemToMatch, TPropertyType> has_a<TPropertyType>(
@@ -34,17 +35,22 @@ namespace prep.utility.filtering
 
     public IMatchA<TItemToMatch> equal_to(TPropertyType value)
     {
-      return new AnonymousMatch<TItemToMatch>(x => property_accessor(x).Equals(value));
+      return equal_to_any(value);
     }
 
     public IMatchA<TItemToMatch> equal_to_any(params TPropertyType[] values)
     {
-        foreach (var value in values)
-        {
-            bool result = equal_to(value);
-            if (result)
-                return result;
-        }
+      return new AnonymousMatch<TItemToMatch>(x =>
+      {
+        var property_value = property_accessor(x);
+        var all_possible_values = new List<TPropertyType>(values);
+        return all_possible_values.Contains(property_value);
+      });
+    }
+
+    public IMatchA<TItemToMatch> not_equal_to(TPropertyType value)
+    {
+      throw new System.NotImplementedException();
     }
   }
 }
