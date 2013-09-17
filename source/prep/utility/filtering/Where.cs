@@ -39,7 +39,12 @@ namespace prep.utility.filtering
 
     public IMatchA<TItemToMatch> equal_to_any(params TPropertyType[] values)
     {
-      throw new System.NotImplementedException();
+        foreach (var value in values)
+        {
+            bool result = equal_to(value);
+            if (result)
+                return result;
+        }
     }
   }
 }
