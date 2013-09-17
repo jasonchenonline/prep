@@ -50,7 +50,7 @@ namespace prep.utility.filtering
 
     public IMatchA<TItemToMatch> not_equal_to(TPropertyType value)
     {
-      throw new System.NotImplementedException();
+      return equal_to(value).not();
     }
   }
 }
