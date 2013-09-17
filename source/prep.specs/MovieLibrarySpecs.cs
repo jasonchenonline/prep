@@ -121,7 +121,6 @@ namespace prep.specs
         first_movie = new Movie();
         second_movie = new Movie();
         movie_collection.add_all(first_movie, second_movie);
-
       };
 
       Because b = () =>
@@ -190,15 +189,12 @@ namespace prep.specs
              * movies using different criteria. Feel free to change/remove explicit methods if you find a way to encompass searching
              * without the need for using explicit methods. For this exercise, no linq queries are allowed!!.*/
 
-
       It should_be_able_to_find_all_movies_published_by_pixar = () =>
       {
         var criteria = Where<Movie>.has_a(x => x.production_studio)
                                    .equal_to(ProductionStudio.Pixar);
 
-
         var results = sut.all_movies().all_matching(criteria);
-
 
         results.ShouldContainOnly(cars, a_bugs_life);
       };
@@ -224,7 +220,7 @@ namespace prep.specs
 
       It should_be_able_to_find_all_movies_published_after_a_certain_year = () =>
       {
-        var criteria = Where<Movie>.has_a(x => x.date_published.Year).greater_than(2004);
+        var criteria = Where<Movie>.has_an(x => x.date_published.Year).greater_than(2004);
 
         var results = sut.all_movies().all_matching(criteria);
 
@@ -233,7 +229,7 @@ namespace prep.specs
 
       It should_be_able_to_find_all_movies_published_between_a_certain_range_of_years = () =>
       {
-        var criteria = Where<Movie>.has_a(x => x.date_published.Year).between(1982,2003);
+        var criteria = Where<Movie>.has_an(x => x.date_published.Year).between(1982, 2003);
 
         var results = sut.all_movies().all_matching(criteria);
 
@@ -242,7 +238,7 @@ namespace prep.specs
 
       It should_be_able_to_find_all_kid_movies = () =>
       {
-        var criteria = Where<Movie>.has_a(x => x.genre) .equal_to(Genre.kids);
+        var criteria = Where<Movie>.has_a(x => x.genre).equal_to(Genre.kids);
 
         var results = sut.all_movies().all_matching(criteria);
 
@@ -251,7 +247,7 @@ namespace prep.specs
 
       It should_be_able_to_find_all_action_movies = () =>
       {
-        var criteria = Where<Movie>.has_a(x => x.genre) .equal_to(Genre.action);
+        var criteria = Where<Movie>.has_a(x => x.genre).equal_to(Genre.action);
 
         var results = sut.all_movies().all_matching(criteria);
 

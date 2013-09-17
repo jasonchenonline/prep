@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using prep.collections;
+﻿using System;
 
 namespace prep.utility.filtering
 {
@@ -17,54 +16,11 @@ namespace prep.utility.filtering
     {
       return new MatchFactory<TItemToMatch, TPropertyType>(property_accessor);
     }
-  }
 
-  /// <summary>
-  /// Factory pattern implementation - Creates specifications
-  /// </summary>
-  /// <typeparam name="TItemToMatch"></typeparam>
-  /// <typeparam name="TPropertyType"></typeparam>
-  public class MatchFactory<TItemToMatch, TPropertyType>
-  {
-    IGetTheValueOfAProperty<TItemToMatch, TPropertyType> property_accessor;
-
-    public MatchFactory(IGetTheValueOfAProperty<TItemToMatch, TPropertyType> property_accessor)
+    public static ComparableMatchFactory<TItemToMatch, TPropertyType> has_an<TPropertyType>(
+      IGetTheValueOfAProperty<TItemToMatch, TPropertyType> property_accessor) where TPropertyType : IComparable<TPropertyType>
     {
-      this.property_accessor = property_accessor;
+      return new ComparableMatchFactory<TItemToMatch, TPropertyType>(property_accessor);
     }
-
-    public IMatchA<TItemToMatch> equal_to(TPropertyType value)
-    {
-      return equal_to_any(value);
-    }
-
-    public IMatchA<TItemToMatch> equal_to_any(params TPropertyType[] values)
-    {
-      return new AnonymousMatch<TItemToMatch>(x =>
-      {
-        var property_value = property_accessor(x);
-        var all_possible_values = new List<TPropertyType>(values);
-        return all_possible_values.Contains(property_value);
-      });
-    }
-
-    public IMatchA<TItemToMatch> not_equal_to(TPropertyType value)
-    {
-      return equal_to(value).not();
-    }
-
-      public IMatchA<TItemToMatch> greater_than(TPropertyType greater_to)
-      {
-          return new AnonymousMatch<TItemToMatch>(x =>
-              {
-                  var property_value = property_accessor(x);
-                  return property_value > greater_to;
-              });
-      }
-
-      public IMatchA<TItemToMatch> between(TPropertyType left_value, TPropertyType right_value)
-      {
-          throw new System.NotImplementedException();
-      }
   }
 }

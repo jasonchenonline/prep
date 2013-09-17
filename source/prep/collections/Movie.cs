@@ -29,15 +29,5 @@ namespace prep.collections
       return this.title.GetHashCode();
     }
 
-    public static IMatchA<Movie> is_published_by(ProductionStudio studio)
-    {
-      return new IsPublishedBy(studio);
-    }
-
-    public static IMatchA<Movie> is_in_genre(Genre genre)
-    {
-      return new IsInGenre(genre);
-    }
-
   }
 }
