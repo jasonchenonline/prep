@@ -13,5 +13,11 @@
     {
       return new NegatingMatch<ItemToMatch>(to_negate);
     }
+    public static IMatchA<ItemToMatch> greater_than<ItemToMatch>(this IMatchA<ItemToMatch> value)
+                                                       
+    {
+      return new NegatingMatch<ItemToMatch>(to_negate);
+    }
+
   }
 }

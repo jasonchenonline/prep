@@ -52,5 +52,19 @@ namespace prep.utility.filtering
     {
       return equal_to(value).not();
     }
+
+      public IMatchA<TItemToMatch> greater_than(TPropertyType greater_to)
+      {
+          return new AnonymousMatch<TItemToMatch>(x =>
+              {
+                  var property_value = property_accessor(x);
+                  return property_value > greater_to;
+              });
+      }
+
+      public IMatchA<TItemToMatch> between(TPropertyType left_value, TPropertyType right_value)
+      {
+          throw new System.NotImplementedException();
+      }
   }
 }
